@@ -1,0 +1,218 @@
+/* General Page Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background: url("./public/background.jpg");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+.quiz-container {
+    background: rgba(133, 188, 228, 0.9);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 80%;
+    max-width: 600px;
+    margin: auto;
+    animation: fadeIn 1s ease-in-out;
+    position: relative;
+}
+
+/* Header */
+h1 {
+    color: #333;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007BFF;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Balloons Container */
+.balloon-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    margin-top: 30px;
+    position: relative;
+    height: 200px;
+}
+
+/* Updated Balloon Styling */
+.balloon {
+    width: 70px;
+    height: 100px;
+    background: radial-gradient(circle at 30% 30%, #FF6347, #FF4500);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    animation: float 2s infinite ease-in-out;
+}
+
+/* Adding a highlight for light reflection */
+.balloon::before {
+    content: "";
+    position: absolute;
+    top: 20%;
+    left: 25%;
+    width: 20px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* Adding a knot at the bottom */
+.balloon::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 15px;
+    background: #FF4500;
+    border-radius: 50%;
+}
+
+/* Adding ropes tied to balloons */
+.balloon-rope {
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 150px; /* Increased rope height */
+    background: black; /* Changed rope color to black */
+    z-index: -1; /* Ensures rope appears behind the balloon */
+}
+
+/* Balloon Colors */
+.balloon:nth-child(2) {
+    background: radial-gradient(circle at 30% 30%, #32CD32, #228B22);
+}
+
+.balloon:nth-child(3) {
+    background: radial-gradient(circle at 30% 30%, #1E90FF, #0000CD);
+}
+
+.balloon:nth-child(4) {
+    background: radial-gradient(circle at 30% 30%, #FFD700, #FFA500);
+}
+
+/* Balloon Hover Shadow Effect */
+.balloon:hover {
+    transform: scale(1.1);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
+}
+
+/* Balloon Shadow and Pop Effect */
+.balloon.pop {
+    transform: scale(0);
+    opacity: 0;
+    transition: transform 0.4s, opacity 0.4s;
+}
+
+/* Balloon Fragments (Realistic Burst Effect) */
+.balloonFragment {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: inherit;
+    border-radius: 50%;
+    animation: fragmentFly 1s forwards;
+    pointer-events: none;
+}
+
+@keyframes fragmentFly {
+    0% {
+        transform: scale(1) translate(0, 0);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0) translate(var(--x), var(--y));
+        opacity: 0;
+    }
+}
+
+/* Floating Animation */
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* Timer and Question Info */
+#questionInfo {
+    margin-bottom: 10px;
+    font-size: 1rem;
+    color: #333;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Sparkle style */
+.screenSparkle {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: rgb(225, 21, 69); /* Sparkle color */
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: sparkleFly 2s ease-out forwards;
+}
+
+/* Sparkle animation */
+@keyframes sparkleFly {
+    0% {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--translateX), var(--translateY));
+        opacity: 0;
+    }
+}

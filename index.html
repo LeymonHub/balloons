@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Balloon Quiz</title>
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Anti British Uprising in Assam Agrarian Revolutions</h1>
+        <button id="startButton">Start MCQ</button>
+        <div id="quizContent" style="display: none;">
+            <div id="questionInfo">
+                <span id="questionNumber"></span> | 
+                <span id="timer">30</span> seconds remaining
+            </div>
+            <div id="questionText"></div>
+            <div id="balloonContainer" class="balloon-container"></div>
+            <div id="result"></div>
+        </div>
+    </div>
+
+    <audio id="popSound" src="./public/balloon.mp3" autoplay></audio>
+
+    <audio id="backgroundMusic" loop>
+        <source src="./public/song.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
